@@ -1,11 +1,11 @@
-name: WEB
+name: DOCS
 
 on:
   push:
-    branches: ["web"]
+    branches: ["docs"]
     paths:
-      - 'apps/web/**'
-      - '.github/workflow/web.yml'
+      - 'apps/docs/**'
+      -  '.github/workflow/server.yaml'
   pull_request:
     types: [opened, synchronize]
 

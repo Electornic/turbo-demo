@@ -5,8 +5,6 @@ export default function Docs() {
     <div>
       <h1>DocsWebWebWeb</h1>
       DocsWebWebWeb
-      <div>CI TEST DOCS</div>
-      <div>CI TEST DOCS</div>
       <Button />
     </div>
   );

@@ -14,4 +14,4 @@ workflows:
           mapping: |
             apps/docs/.* docs false
             apps/web/.* web true
-            shared-things/.* run-them-all true
+            shared-things/.* run-them-all false

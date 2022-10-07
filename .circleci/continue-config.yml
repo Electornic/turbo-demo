@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  node: circleci/node@5.0.2
+
 executors:
   base:
     docker:
@@ -17,38 +20,46 @@ parameters:
     default: false
 
 jobs:
-  docs:
-    executor: base
+  build:
+    docker:
+      - image: cimg/node:lts
     steps:
-      - run: '~/apps/docs/.circleci/config.yml' build
+      - checkout
+      - node/install-packages:
+        pkg-manager: yarn
+      - run:
+        command: yarn build
 
-  web:
+  build-docs:
     executor: base
     steps:
-      - run: '~/apps/web/.circleci/config.yml' build
+      - run: ./apps/docs build
+
+  build-web:
+    executor: base
+    steps:
+      - run: ./apps/web build
   all_projects:
     executor: base
     steps:
-      - run: '~/apps/docs/.circleci/config.yml' build
-      - run: '~/apps/web/.circleci/config.yml' build
-
+      - run: ./apps build
 
 workflows:
-  build-1:
+  build-docs:
     when:
       or:
         - << pipeline.parameters.docs >>
         - << pipeline.parameters.run-them-all >>
     jobs:
-      - docs
+      - build-docs
 
-  build-2:
+  build-web:
     when:
       or:
         - << pipeline.parameters.web >>
         - << pipeline.parameters.run-them-all >>
     jobs:
-      - web
+      - build-web
 
   build-shared-other:
     when: << pipeline.parameters.run-them-all >>

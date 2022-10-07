@@ -1,0 +1,60 @@
+version: 2.1
+
+executors:
+  base:
+    docker:
+      - image: cimg/base:stable
+
+parameters:
+  docs:
+    type: boolean
+    default: false
+  web:
+    type: boolean
+    default: false
+  run-them-all:
+    type: boolean
+    default: false
+
+jobs:
+  docs:
+    executor: base
+    steps:
+      - run:
+          command: |
+            echo "project one"
+
+  web:
+    executor: base
+    steps:
+      - run:
+          command: |
+            echo "project two"
+  all_projects:
+    executor: base
+    steps:
+      - run:
+          command: |
+            echo "all"   
+
+workflows:
+  build-1:
+    when:
+      or:
+        - << pipeline.parameters.docs >>
+        - << pipeline.parameters.run-them-all >>
+    jobs:
+      - docs
+
+  build-2:
+    when:
+      or:
+        - << pipeline.parameters.web >>
+        - << pipeline.parameters.run-them-all >>
+    jobs:
+      - web
+
+  build-shared-other:
+    when: << pipeline.parameters.run-them-all >>
+    jobs:
+      - all_projects

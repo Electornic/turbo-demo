@@ -7,9 +7,6 @@ export default function Docs() {
       DocsWebWebWeb
       <div>CI DOCS</div>
       <div>CI DOCS</div>
-      <div>CI DOCS</div>
-      <div>CI DOCS</div>
-      <div>CI DOCS</div>
       <Button />
     </div>
   );

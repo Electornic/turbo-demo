@@ -32,18 +32,18 @@ jobs:
 
   build-docs:
     executor: base
-    working_directory: ~/apps/docs
+    working_directory: ~/turbo-demo/apps/docs
     steps:
       - run: build
 
   build-web:
     executor: base
-    working_directory: ~/apps/web
+    working_directory: ~/turbo-demo/apps/web
     steps:
       - run: build
   all_projects:
     executor: base
-    working_directory: ~/apps
+    working_directory: ~/turbo-demo/apps
     steps:
       - run: build
 

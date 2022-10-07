@@ -6,7 +6,7 @@ orbs:
 executors:
   base:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:lts
 
 parameters:
   docs:
@@ -34,18 +34,31 @@ jobs:
     executor: base
     working_directory: ~/turbo-demo/apps/docs
     steps:
-      - run: build
+      - checkout
+      - node/install-packages:
+        pkg-manager: yarn
+      - run:
+        command: yarn build
 
   build-web:
     executor: base
     working_directory: ~/turbo-demo/apps/web
     steps:
-      - run: build
+      - checkout
+      - node/install-packages:
+        pkg-manager: yarn
+      - run:
+        command: yarn build
+
   all_projects:
     executor: base
     working_directory: ~/turbo-demo/apps
     steps:
-      - run: build
+      - checkout
+      - node/install-packages:
+        pkg-manager: yarn
+      - run:
+        command: yarn build
 
 workflows:
   build-docs:

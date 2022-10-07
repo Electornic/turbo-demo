@@ -20,22 +20,18 @@ jobs:
   docs:
     executor: base
     steps:
-      - run:
-          command: |
-            echo "project one"
+      - run: '~/apps/docs/.circleci/config.yml' build
 
   web:
     executor: base
     steps:
-      - run:
-          command: |
-            echo "project two"
+      - run: '~/apps/web/.circleci/config.yml' build
   all_projects:
     executor: base
     steps:
-      - run:
-          command: |
-            echo "all"   
+      - run: '~/apps/docs/.circleci/config.yml' build
+      - run: '~/apps/web/.circleci/config.yml' build
+
 
 workflows:
   build-1:

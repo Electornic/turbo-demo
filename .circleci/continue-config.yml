@@ -32,17 +32,20 @@ jobs:
 
   build-docs:
     executor: base
+    working_directory: ~/apps/docs
     steps:
-      - run: ./apps/docs build
+      - run: build
 
   build-web:
     executor: base
+    working_directory: ~/apps/web
     steps:
-      - run: ./apps/web build
+      - run: build
   all_projects:
     executor: base
+    working_directory: ~/apps
     steps:
-      - run: ./apps build
+      - run: build
 
 workflows:
   build-docs:

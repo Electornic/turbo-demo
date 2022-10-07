@@ -34,7 +34,6 @@ jobs:
     executor: base
     working_directory: ~/turbo-demo/apps/docs
     steps:
-      - checkout
       - node/install-packages:
         pkg-manager: yarn
       - run:
@@ -44,7 +43,6 @@ jobs:
     executor: base
     working_directory: ~/turbo-demo/apps/web
     steps:
-      - checkout
       - node/install-packages:
         pkg-manager: yarn
       - run:
@@ -54,7 +52,6 @@ jobs:
     executor: base
     working_directory: ~/turbo-demo/apps
     steps:
-      - checkout
       - node/install-packages:
         pkg-manager: yarn
       - run:

@@ -8,6 +8,8 @@ export default function Web() {
       <div>CI WEB</div>
       <div>CI WEB</div>
       <div>CI WEB</div>
+      <div>CI WEB</div>
+      <div>CI WEB</div>
       <Button />
     </div>
   );

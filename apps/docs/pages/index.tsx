@@ -8,6 +8,8 @@ export default function Docs() {
       <div>CI DOCS</div>
       <div>CI DOCS</div>
       <div>CI DOCS</div>
+      <div>CI DOCS</div>
+      <div>CI DOCS</div>
       <Button />
     </div>
   );

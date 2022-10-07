@@ -31,27 +31,33 @@ jobs:
         command: yarn build
 
   build-docs:
-    executor: base
+    docker:
+      - image: cimg/node:lts
     working_directory: ~/turbo-demo/apps/docs
     steps:
+      - checkout
       - node/install-packages:
         pkg-manager: yarn
       - run:
         command: yarn build
 
   build-web:
-    executor: base
+    docker:
+      - image: cimg/node:lts
     working_directory: ~/turbo-demo/apps/web
     steps:
+      - checkout
       - node/install-packages:
         pkg-manager: yarn
       - run:
         command: yarn build
 
   all_projects:
-    executor: base
+    docker:
+      - image: cimg/node:lts
     working_directory: ~/turbo-demo/apps
     steps:
+      - checkout
       - node/install-packages:
         pkg-manager: yarn
       - run:

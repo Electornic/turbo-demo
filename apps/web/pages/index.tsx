@@ -4,6 +4,7 @@ export default function Web() {
   return (
     <div>
       <h1>WebWebWebWebWebWeb</h1>
+      DocsWebWebWebWeb
       <Button />
     </div>
   );

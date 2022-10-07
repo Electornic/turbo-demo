@@ -9,6 +9,7 @@ jobs:
   build:
     docker:
       - image: cimg/node:lts
+    working_directory: "~/apps/web"
     steps:
       - checkout
       - node/install-packages:
